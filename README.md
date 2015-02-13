@@ -12,7 +12,7 @@ This module is a Zend Framework 2 module to generate some simple and custom moda
 Configuration
 -------------
 1. ZF2 Version 2.3.4
-2. Semantic UI
+2. Semantic UI 1.8.1
 
 Installation
 -----------
