@@ -1,0 +1,9 @@
+<?php
+$page = (object) $this->layout()->child_page;
+?>
+
+<?php if ($page->state_message == 0) : ?>
+    <?= $this->translate("Sample : Souhaîtez-vous archiver cet élement") . ' <span class="ui small label">N°' . $page->id . '</span> ?'; ?>
+<?php elseif ($page->state_message == 1) : ?>
+    <?= $this->translate("Sample : Souhaîtez-vous activer cet élement") . ' <span class="ui small label">N°' . $page->id . '</span> ?'; ?>
+<?php endif; ?>

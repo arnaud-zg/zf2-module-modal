@@ -1,0 +1,11 @@
+<?php
+$page = (object) $this->layout()->child_page;
+?>
+
+<div class="ui grid">
+    <div class="column">
+        <div class="ui red large message">
+            <?= $this->translate($page->custom_message); ?>
+        </div>
+    </div>
+</div>

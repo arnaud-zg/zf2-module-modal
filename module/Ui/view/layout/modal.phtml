@@ -1,0 +1,22 @@
+<div class="ui modal tp-1" id="modal_<?= $this->id ?>">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="<?= $this->title["icon"] ?> icon"></i> 
+        <?= $string = (isset($this->title["string"])) ? $this->title["string"] : ""; ?>
+    </div>
+    <div class="content">
+        <?php echo $this->content; ?>
+    </div>
+    <div class="actions">
+        <?php if (isset($this->button['confirm']) && ($this->state >= 0)) : ?>
+        <a class="ui confirm button">
+            <i class="checkmark icon"></i> <?= $this->button['confirm'] ?>
+        </a>
+        <?php endif; ?>
+        <?php if (isset($this->button['noconfirm']) && ($this->state >= 0)) : ?>
+        <a class="ui negative noconfirm button">
+            <i class="remove icon"></i> <?= $this->button['noconfirm'] ?>
+        </a>
+        <?php endif; ?>
+    </div>
+</div>

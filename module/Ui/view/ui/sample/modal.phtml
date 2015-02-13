@@ -1,0 +1,107 @@
+<?php if (!isset($this->title['flash'])) : ?>
+    <?= $this->flashMessenger() ?>
+<?php endif; ?>
+
+<?php
+ $form = $this->form;
+ $form->prepare();
+?>
+
+<div class="ui divider"></div>
+<h2>Sample Mode</h2>
+<div class="ui eight column grid">
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => 0), $this->modals["sample"]) ?>'>Modal Info</a><br/>
+    </div>
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => -1), $this->modals["sample"]) ?>'>Modal Error</a><br/><br/>
+    </div>
+    <div class="column">
+        <?php
+        $form->get('submit')->setAttribute('data-modal', $this->modallink(array("id" => 2, "state_message" => 1), $this->modals["sample"]));
+        $form->get('submit')->setAttribute('value', "List Modal");
+        echo $this->form()->openTag($form);
+        echo $this->formSubmit($form->get('submit'));
+        echo $this->form()->closeTag($form);
+        ?>
+    </div>
+    <div class="column">
+        <?php
+        $form->get('submit')->setAttribute('data-modal', $this->modallink(array("id" => 2, "state_message" => -1), $this->modals["sample"]));
+        $form->get('submit')->setAttribute('value', "List Modal Erreur");
+        echo $this->form()->openTag($form);
+        echo $this->formSubmit($form->get('submit'));
+        echo $this->form()->closeTag($form);
+        ?>
+    </div>
+</div>
+<div class="ui divider"></div>
+
+<?php
+    $modal = array();
+    $modal[] = $this->modals["override"];
+    $modal[] = $this->modals["override"];
+    $modal[] = $this->modals["override"];
+    $modal[] = $this->modals["override"];
+    $modal[] = $this->modals["override"];
+    $modal[] = $this->modals["override"];
+    
+    unset($modal[1]['title']);
+    unset($modal[2]['content']);
+    unset($modal[3]['btn']['confirm']);
+    unset($modal[3]['btn']['noconfirm']);
+    unset($modal[4]['btn']['confirm']);
+    unset($modal[5]['btn']['noconfirm']);
+?>
+<h2>Override Mode</h2>
+<div class="ui eight column grid">    
+    <?php foreach ($modal as $key => $modalOverride) : ?>
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => 0), $modalOverride) ?>'>Modal Override <?php echo $key + 1; ?></a><br/>
+    </div>
+    <?php endforeach; ?>
+        
+    <?php foreach ($modal as $key => $modalOverride) : ?>
+        <div class="column">
+            <?php
+            $form->get('submit')->setAttribute('data-modal', $this->modallink(array("id" => 2, "state_message" => 1), $modalOverride));
+            $form->get('submit')->setAttribute('value', "List Modal ".($key + 1));
+            echo $this->form()->openTag($form);
+            echo $this->formSubmit($form->get('submit'));
+            echo $this->form()->closeTag($form);
+            ?>
+        </div>
+    <?php endforeach; ?>
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => -1), $this->modals["override"]) ?>'>Modal Error Override</a><br/><br/>
+    </div>    
+</div>
+<div class="ui divider"></div>
+<?php unset($modal); ?>
+<h2>Custom Mode</h2>
+<div class="ui eight column grid">
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => 0), $this->modals["custom"]) ?>'>Modal Info Custom</a>
+    </div>
+    <div class="column">
+        <a href="#" class="smodal" data-modal='<?= $this->modallink(array("id" => 2, "state_message" => -1), $this->modals["custom"]) ?>'>Modal Error Custom</a>
+    </div>
+    <div class="column">
+            <?php
+            $form->get('submit')->setAttribute('data-modal', $this->modallink(array("id" => 2, "state_message" => 1), $this->modals["custom"]));
+            $form->get('submit')->setAttribute('value', "List Modal Info Custom");
+            echo $this->form()->openTag($form);
+            echo $this->formSubmit($form->get('submit'));
+            echo $this->form()->closeTag($form);
+            ?>
+    </div>
+    <div class="column">
+            <?php
+            $form->get('submit')->setAttribute('data-modal', $this->modallink(array("id" => 2, "state_message" => -1), $this->modals["custom"]));
+            $form->get('submit')->setAttribute('value', "List Modal Error Custom");
+            echo $this->form()->openTag($form);
+            echo $this->formSubmit($form->get('submit'));
+            echo $this->form()->closeTag($form);
+            ?>        
+    </div>
+</div>

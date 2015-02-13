@@ -1,0 +1,12 @@
+<?php
+$page = (object) $this->layout()->child_page;
+?>
+
+<?php if (isset($page->custom_message)) : ?>
+    <?= $this->translate($page->custom_message); ?>
+<?php else : ?>
+    <?= $this->translate("Souhaîtez-vous vraiment effectuer cette action sur l'élement"); ?>
+    <?php if (isset($page->id)) : ?>
+        <?= ' <span class="ui small label">N°' . $page->id . '</span> ?' ?>
+    <?php endif; ?>
+<?php endif; ?>
