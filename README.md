@@ -1,5 +1,5 @@
-# zf2-modal-module
-ZF2 Simple modal module 
+# zf2-module-modal
+ZF2 Simple module modal
 
 Created for [Testapic](http://www.testapic.com "Testez - Optimisez - Rentabilisez")
 
